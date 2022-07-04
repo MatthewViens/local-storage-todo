@@ -13,13 +13,13 @@ const saveTodos = () => {
 const renderTodos = () => {
     todos = JSON.parse(localStorage.getItem('todos')) || [] 
     todoList.innerHTML = ''
-    for (todo of todos) {
+    for (const todo of todos) {
         createTodoEl(todo)
     }
 }
 
 const deleteTodo = (deleteEl) => {
-    for (todo of todos) {
+    for (const todo of todos) {
         if (deleteEl.dataset.key == todo.key) {
             todos.splice(todos.indexOf(todo), 1)
         }
@@ -28,7 +28,7 @@ const deleteTodo = (deleteEl) => {
 }
 
 const changeTodoStatus = (todoEl) => {
-    for (todo of todos) {
+    for (const todo of todos) {
         if (todoEl.dataset.key == todo.key) {
             todo.status === "new" ? todo.status = "done" : todo.status = "new"
         }
@@ -54,7 +54,7 @@ const createTodoEl = (todo) => {
 
 todoForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    todo = {
+    const todo = {
         key: Date.now(),
         value: todoInput.value,
         status: "new"
